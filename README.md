@@ -1,7 +1,6 @@
 # Usuarios App
 
-abrir una consola en el directorio de la aplicacion, y ejecutar npm install y seguidamente npm start
-
+abrir una consola en el directorio de la aplicacion, y ejecutar npm install para descargar los paquetes necesarios del proyecto
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
 ## Development server
