@@ -1,0 +1,71 @@
+.dialog{
+    max-width: 50rem;
+    
+  }
+  mat-grid-tile {
+      background: lightblue;
+    }
+  mat-form-field{
+    width: 100%;
+  }
+  
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .container-btn{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 5rem;
+    button{
+      cursor: pointer;
+      margin-left: 1rem;    
+    }
+  }
+  
+  
+
+  
+  .vector{
+    position: absolute;
+    top: 70px;
+    left: 420px;
+    display: flex;
+    align-items: center;
+    img{
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;;
+      margin-right: 14px;
+    }
+  }
+  
+  
+  h2{  
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.8px;
+    margin-bottom: 80px;
+  }
+  p{
+    font-size: 15px;
+    color: #e4e4e4;
+    font-weight: 100;
+    letter-spacing: 0.8px;
+  }
+  
+  .saveDialog{
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  td {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }

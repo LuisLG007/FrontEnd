@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GamePlanetSPA';
+
+  @HostBinding('class') componentCSS: any;
+
+  constructor( public overlayContainer: OverlayContainer ) {}
+
+  public onSetTheme( theme: string):void 
+  {
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    this.componentCSS = theme;
+  }
 }

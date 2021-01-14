@@ -1,0 +1,69 @@
+<mat-tab-group mat-align-tabs="center" (selectedTabChange)="ontabChange($event)" class="animate__animated animate__fadeIn"> 
+    <mat-tab >
+        <ng-template mat-tab-label>
+            <p [style.color]="thetab.isYellow ? 'blue' : 'gray'">Tabla<p>
+          </ng-template>
+        <div class="container">
+            <div class="container-btn-create">
+                <button mat-raised-button color="primary" (click)="onCreate()" ><mat-icon>note_add</mat-icon>&nbsp; Nuevo Usuario</button>
+            </div>
+        
+            <mat-form-field>
+                <mat-label>Buscar</mat-label>
+                <input type="search" matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Mario">
+            </mat-form-field>
+        
+            <div class="mat-elevation-z1">
+                <div class="table-responsive ">
+                    <table  mat-table [dataSource]="DataSource" matSort (matSortChange)="sortChange($event)" multiTemplateDataRows>
+                        
+                        <ng-container matColumnDef="avatar">
+                            <th mat-header-cell *matHeaderCellDef > Avatar </th>
+                            <td mat-cell *matCellDef="let row">
+                                <img class="imgTable" *ngIf="row.usuario1 != ''"   src="https://ui-avatars.com/api/?name={{ row.usuario1 }}&color=7F9CF5&background=EBF4FF&rounded=true">
+                            </td>                                              
+                        </ng-container>     
+
+                        <!-- Column -->
+                        <ng-container [matColumnDef]="column" *ngFor="let column of DisplayedColumns |  slice:1:5; let x = index;"> 
+                            <th  mat-header-cell *matHeaderCellDef mat-sort-header matRipple
+                            matTooltip="{{ sortTooltip }}"  matTooltipClass="sortTooltip"  
+                            matTooltipPosition = "above" 
+                            [ngClass]="{thASC: (sortActive === 'asc' && sortActiveName === column) , thDESC: (sortActive === 'desc' && sortActiveName === column)}"
+                            > {{ DisplayedColumnsUpper[x] }} </th>
+                            <td mat-cell *matCellDef="let row" > {{ row[column] == true || row[column] == false ? (row[column] | status) : row[column] }}  </td>
+                        </ng-container>                            
+                       
+                        <!-- Edit Column -->
+                        <ng-container matColumnDef="Edit">
+                            <th mat-header-cell *matHeaderCellDef > Editar </th>
+                            <td mat-cell *matCellDef="let row"> <button mat-stroked-button color="primary" (click)="onUpdate(row)" 
+                                matTooltip="Editar los datos de {{row.nombre}}"  matTooltipClass="primaryTooltip"  
+                                matTooltipPosition = "above" aria-label="Button that shows a primary tooltip"><mat-icon>edit</mat-icon></button></td>
+                        </ng-container>
+                        <!-- Delete Column -->
+                        <ng-container matColumnDef="Delete">
+                            <th mat-header-cell *matHeaderCellDef > Eliminar </th>
+                            <td mat-cell *matCellDef="let row"><button mat-stroked-button color="warn" (click)="onDelete(row)" 
+                                matTooltip="Eliminar los datos de {{row.nombre}}"  matTooltipClass="warnTooltip" 
+                                matTooltipPosition = "above" aria-label="Button that shows a warn tooltip"><mat-icon>delete</mat-icon></button></td>
+                        </ng-container>     
+                       
+                        <tr mat-header-row *matHeaderRowDef="DisplayedColumns" ></tr>
+                        <tr mat-row *matRowDef="let row; columns: DisplayedColumns;"></tr>
+                    
+                    </table>
+        
+                </div>
+                <app-loading *ngIf="loadding <= 0" ></app-loading>
+                <mat-paginator         
+                    [pageSize]="page_size"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="handlePage($event)"
+                    showFirstLastButtons>">
+                </mat-paginator>
+            </div>
+        </div>
+    </mat-tab>
+   
+  </mat-tab-group>

@@ -1,0 +1,14 @@
+.example-card {
+    margin-top: 20px;
+    max-width: 500px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://scontent.ftgz1-1.fna.fbcdn.net/v/t1.0-1/c0.0.160.160a/p160x160/70528912_3110434099027873_2463169787274985472_o.jpg?_nc_cat=106&ccb=2&_nc_sid=7206a8&_nc_eui2=AeHV0w-wfe8U74dQ77-ADjs4wlA1AldpdA_CUDUCV2l0D55taGPqSWaP3fBwA6elcpZ4HnDUsiuLAOkOrvQ5d_Hs&_nc_ohc=Ov_tzvDTAZMAX9HEoxV&_nc_ht=scontent.ftgz1-1.fna&tp=27&oh=99f288125072e70e87d1aab45a8e41cc&oe=60252EBF');
+    background-size: cover;
+  }
+
+  .cardMe{
+    display: flex;
+    justify-content: center;
+  }

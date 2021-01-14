@@ -1,0 +1,127 @@
+
+.all-wrap {
+  min-height: 100vh; // same height as browser window height
+}
+ 
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // same height as browser window height
+}
+ 
+.content {
+  flex: 1; // child will set to an equal size inside the container
+  //background: white;
+}
+ 
+ 
+/*
+ * Make the component injected by <router-outlet> full height:
+ */
+ 
+main {
+ 
+  display: flex;
+  flex-direction: column;
+ 
+  // Select all direct descendants only of the <main> element
+  // that are not <router-outlet> elements:
+  > *:not(router-outlet) {
+ 
+    flex: 1; // child will set to an equal size inside the container
+    display: block;
+ 
+  }
+ 
+}
+.hamburMenu{
+  color: white;
+}
+
+.sidenav {
+  width: 25rem;
+  background: inherit;
+  background: white;
+}
+.menu-header-overflow{
+  overflow-x:hidden !important;
+  overflow:hidden !important;
+}
+.menu-header
+{
+  height: 180px;
+  width: 350px;
+  background: #82B1FF;
+  background: linear-gradient(90deg, #448AFF 0%, #2962FF 100%);
+  box-shadow: 0px 1px 10px rgba(98, 140, 355);
+  transform: rotate(-15deg);
+  border-radius: 10px 10px 10px 50px;
+  margin-left: -18px;
+  margin-top: -50px;
+  margin-bottom: 60px;
+}
+.menu-header-content{
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  img{
+    width: 200px;
+    height: 100px;
+    
+    //border: 7px solid #FFAB00;
+   
+    margin-right: 14px;
+  }
+  h2{
+    margin-top: -25px;
+    font-weight: 500;
+    color: #fff;
+  }
+  p{
+    margin-top: -10px;
+    font-size: 15px;
+    color: #e4e4e4;
+    font-weight: 100;
+    letter-spacing: 0.8px;
+  }
+}
+
+.menuLink
+{
+  transition: all 0.7s;
+  color: #546E7A;
+ mat-icon{
+  padding-inline: 3rem !important;  
+ }
+
+ &:hover{
+   background-color: #2979FF !important;
+   color: white !important;
+   padding-left: 1rem !important;
+   mat-icon{
+    color: white;
+   }
+ }
+}
+mat-icon{
+  color: #448AFF;
+}
+
+.list-item-active {
+  background-color: #0091EA !important;
+  color: whitesmoke !important;
+  padding-left: 1rem !important;
+  mat-icon{
+    color: white;
+   }
+}
+
+
+.spacer{
+  flex: 1 1 auto;
+}
+.menuulogin{
+  padding: 20px;;
+}

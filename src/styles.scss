@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+//@import '~@sweetalert2/theme-material-ui/material-ui.scss';
+@import '~@sweetalert2/themes/dark/dark.scss';
+@import '~animate.css/animate.min';
+
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html ::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.4rem;
+}
+html ::-webkit-scrollbar-track{
+   background: white;
+}
+
+html ::-webkit-scrollbar-thumb{
+    background: #607D8B;
+    border-radius: 5px;
+    &:active{
+        background: #0091EA;
+    }
+ }

@@ -1,0 +1,124 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="dialog" class="animate__animated animate__fadeIn">
+    <mat-card class="box">
+      <mat-card-header>        
+        <div class="menu-header">
+        </div>
+      </mat-card-header> 
+      <div class="menu-header-content">
+        <!--<img *ngIf="User.nombre != ''"  class="animate__animated animate__rubberBand" src="https://ui-avatars.com/api/?background=448AFF&color=FFFFFF&rounded=true&name={{ User.nombre }}">-->
+        <img class="animate__animated animate__rubberBand" src="https://www.onecore.mx/hubfs/sitio/img/logos/logo_onecore_header.svg">
+        <mat-label>
+          <!--<h2 >{{ myForm.get('nombre').valueChanges | async}} &nbsp;</h2>-->
+          <br/>
+          <h2 *ngIf="action" >Editar Usuario</h2>
+          <h2 *ngIf="action == false" >Agregar Usuario</h2>
+          
+        </mat-label>
+      </div>   
+    
+  
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit($event)" > 
+    
+        <mat-card-content>
+          
+              <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput #input minlength="7" formControlName="usuario1" required >
+                <mat-icon color="primary" matSuffix>person</mat-icon>
+                <mat-hint align="end">{{input.value?.length || 0}}/ min:7</mat-hint>
+                <mat-error *ngIf="myForm.get('correo').errors && myForm.get('usuario1').touched">
+                  <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('usuario1').hasError('required')">Campo requerido</mat-error>
+                  <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('usuario1').hasError('minlength')">Mínimo 7 caracteres</mat-error>
+                </mat-error>
+              </mat-form-field>     
+           
+            <br *ngIf="!action"/>
+            <br *ngIf="!action"/>    
+                   
+              <mat-form-field>
+                <mat-label>Estatus</mat-label>                          
+                <mat-select formControlName="estatus" required>
+                  <mat-option [value]="true">Activo</mat-option>
+                  <mat-option [value]="false">Inactivo</mat-option>
+                </mat-select>
+                <mat-icon color="primary" matSuffix>accessibility</mat-icon>                
+                <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('estatus').invalid">Campo requerido</mat-error>   
+              </mat-form-field>  
+        
+        <br/>
+        <br/>     
+                
+            <mat-form-field>
+              <mat-label>Sexo</mat-label>                          
+              <mat-select formControlName="sexo" required>
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Femenino">Femenino</mat-option>
+              </mat-select>
+              <mat-icon color="primary" matSuffix>favorite</mat-icon>                
+              <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('sexo').invalid">Campo requerido</mat-error>   
+            </mat-form-field>  
+     
+        <br/>
+        <br/>
+     
+              <mat-form-field class="FormField">
+                  <mat-label>Correo</mat-label>
+                  <input type="email" matInput formControlName="correo" required>
+                  <mat-icon color="primary" matSuffix>email</mat-icon>
+                  <mat-error *ngIf="myForm.get('correo').errors && myForm.get('correo').touched">
+                  <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('correo').hasError('required')">Campo requerido</mat-error>   
+                  <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('correo').hasError('pattern')">Ingrese un correo valido</mat-error>
+                  </mat-error>
+              </mat-form-field>      
+      
+        <br/>
+        <br/>                        
+             
+            <mat-form-field >
+              <mat-label>Contraseña</mat-label>
+              <input  type="password"  #password 
+              matInput formControlName="contrasena" required>
+              <mat-icon color="primary" matSuffix>https</mat-icon>             
+              <mat-error *ngIf="myForm.get('contrasena').errors && myForm.get('contrasena').touched">
+                <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('contrasena').hasError('required')">Campo requerido</mat-error>                   
+                <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('contrasena').hasError('pattern')">Ingrese contraseña valida</mat-error> 
+              </mat-error> 
+            </mat-form-field>    
+            <mat-password-strength #passwordComponent                             
+                                   [password]="password.value">
+            </mat-password-strength>       
+            <br/>  
+            
+            
+            <mat-form-field>
+              <mat-label>Confirmar contraseña</mat-label>
+              <input type="password" matInput #passwordConfirm
+              formControlName="confirmPassword" required>
+              <mat-icon color="primary" matSuffix>https</mat-icon>
+              <mat-error *ngIf="myForm.get('confirmPassword').errors && myForm.get('confirmPassword').touched">
+                <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('confirmPassword').hasError('required')">Campo requerido</mat-error>                   
+                <mat-error class="animate__animated animate__shakeX" *ngIf="f.confirmPassword.errors.mustMatch">Las contraseñas no coinciden</mat-error>   
+                <mat-error class="animate__animated animate__shakeX" *ngIf="myForm.get('confirmPassword').hasError('pattern')">Las contraseñas no coinciden</mat-error> 
+              </mat-error>
+            </mat-form-field>  
+            <mat-password-strength #passwordComponent                             
+                                   [password]="passwordConfirm.value">
+            </mat-password-strength>       
+         
+      <br/>     
+        </mat-card-content>
+  
+        <div class="container-btn">
+            <button type="button" class="clear" (click)="clearForm()"  mat-button  color="primary" *ngIf="!action" ><mat-icon>clear_all</mat-icon> Limpiar</button> 
+            <button type="submit" mat-raised-button class="saveDialog" color="primary" ><mat-icon>save</mat-icon> Guardar</button> 
+            <button type="button" mat-button color="accent" mat-dialog-close><mat-icon>close</mat-icon> Cerrar</button>
+        </div>
+      </form>
+    </mat-card>
+    <div class="center" *ngIf="User.id == '' && action " >
+      <mat-progress-spinner diameter=100 
+                            mode="indeterminate"
+                            color="primary" >
+      </mat-progress-spinner> 
+    </div>
+  </div>

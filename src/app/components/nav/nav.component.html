@@ -1,0 +1,78 @@
+<mat-sidenav-container class="sidenav-container" class="all-wrap">
+  <mat-sidenav #sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <div class="menu-header-overflow">
+        <div class="menu-header">
+        </div>
+      </div>
+          <div class="menu-header-content">    
+            <!--<img id="logo" class="animate__animated animate__rubberBand animate__repeat-3"  src="../../../assets/redLogo.png">-->
+            <img id="logo" class="animate__animated animate__rubberBand animate__delay-2s"  src="https://www.onecore.mx/hubfs/sitio/img/logos/logo_onecore_header.svg">
+          </div>
+      <mat-nav-list >
+        <h2 matSubheader>Secciones</h2>
+        <!--<mat-slide-toggle (change)="onSetTheme($event)" >Slide me!</mat-slide-toggle>-->
+        <a class="menuLink" *ngFor="let item of appPages" 
+          mat-list-item 
+          routerLinkActive
+          (click)="hide? drawer.toggle() : 0"
+          #routerLinkActiveInstance="routerLinkActive"
+          [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+          [class.list-item-active]="routerLinkActiveInstance.isActive"
+          [routerLink]="[item.url]">
+        <mat-icon  matListIcon class="nav-list-icon">{{item.icon}}</mat-icon>
+        {{item.title}}
+      </a>    
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="page-wrap">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon class="hamburMenu" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ route | titlecase   }}</span>
+      <div class="spacer"></div>
+      <button mat-button  *ngIf="UserData.estatus" (click)="logout()" >Logout</button>
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="!UserData.estatus">Login</button>
+
+      <mat-menu #menu="matMenu" >
+
+          <div class="menuulogin" (click)="$event.stopPropagation(); false;"> 
+
+            <mat-form-field>
+              <mat-label>Usuario</mat-label>
+              <input type="text" matInput #input [(ngModel)]="User.usuario1"/>
+              <mat-icon color="primary" matSuffix>person</mat-icon>      
+            </mat-form-field> 
+
+            <mat-form-field>
+              <mat-label>Contraseña</mat-label>
+              <input type="password" matInput #input [(ngModel)]="User.contrasena"/>
+              <mat-icon color="primary" matSuffix>https</mat-icon>      
+            </mat-form-field>   
+
+            <button mat-raised-button color="primary" (click)="login()" >Iniciar Sesión</button>
+          </div>  
+    
+      </mat-menu>
+
+
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+
+    
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

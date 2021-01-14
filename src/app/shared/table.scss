@@ -1,0 +1,70 @@
+.container{
+    padding: 3rem;
+}
+.container-btn-create{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 1rem -0.6rem;
+    
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+
+table {
+    width: 100%;    
+}
+
+.imgTable{
+    max-width: 30px;
+    padding-top: 6px;
+}
+
+.table-responsive {    
+    overflow: auto;
+}
+
+th:hover {
+    color: #0091EA;
+}
+.thASC
+{
+    color: #2962FF;
+    font-weight: 900;
+    letter-spacing: 0.9px !important;
+}
+.thDESC
+{
+    color: #FFAB00;
+    font-weight: 900;
+    letter-spacing: 0.9px !important;
+}
+
+.sortTooltip{
+    background-color: #0091EA;
+}
+.primaryTooltip {
+    background-color: #448AFF;
+}
+  
+.warnTooltip {
+    background-color: #b71c1c;
+}
+
+.mat-row:hover {
+    //f5f5f5
+    background-color:#BBDEFB;
+    //cursor: pointer;
+}
+.mat-row {
+    height: auto;
+  }
+  
+  .mat-cell {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
